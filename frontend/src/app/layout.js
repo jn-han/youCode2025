@@ -1,10 +1,10 @@
-import { Bungee_Tint } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import HomePage from "./HomePage/Page";
 
-const bungeeMono = Bungee_Tint({
-  variable: "--font-bungee",
+const interMono = Inter({
+  variable: "--font-primary",
   subsets: ["latin"],
   weight: "400",
 });
@@ -17,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children, pageProps }) {
   return (
     <html lang="en">
-      <body className={`${bungeeMono.variable}`}>
+      <body className={`${interMono.variable} ${bungeeMono.variable}`}>
         <Navbar />
         <main>{children}</main>
       </body>

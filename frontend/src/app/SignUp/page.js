@@ -25,12 +25,14 @@ const SignUpPage = () => {
         onChange={(e) => setName(e.target.value)}
       />
       <input
-        className="font-"
+        className="font-primary"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <button onClick={handleCreateUser}>Create User</button>
+      <button className="font-primary" onClick={handleCreateUser}>
+        Create User
+      </button>
     </div>
   );
 };
