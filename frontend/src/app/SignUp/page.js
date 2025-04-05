@@ -19,11 +19,13 @@ const SignUpPage = () => {
   return (
     <div>
       <input
+        className="font-bungee"
         placeholder="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
       <input
+        className="font-"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}

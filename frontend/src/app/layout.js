@@ -1,16 +1,12 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bungee_Tint } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
-import HomePage from "./HomePage/Page"
+import HomePage from "./HomePage/Page";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bungeeMono = Bungee_Tint({
+  variable: "--font-bungee",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata = {
@@ -21,13 +17,10 @@ export const metadata = {
 export default function RootLayout({ children, pageProps }) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${bungeeMono.variable}`}>
         <Navbar />
         <main>{children}</main>
       </body>
     </html>
   );
 }
-
-
-
