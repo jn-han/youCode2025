@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { LoadScript, Autocomplete } from "@react-google-maps/api";
 import API from "../../../utils/api";
 import { useRouter } from "next/navigation";
+import Navbar from "@/components/Navbar";
 
 const Select = dynamic(() => import("react-select"), { ssr: false });
 
@@ -95,8 +96,13 @@ const CreateEvent = () => {
   };
 
   return (
-    <div className="p-10 w-full max-w-2xl mx-auto bg-white rounded shadow">
-      <h1 className="text-3xl font-bold mb-6">Create Event</h1>
+    <div>
+      <Navbar/>
+    <div className="mx-24 mt-12 font-primary">
+      <h1 className="text-3xl">Create Event</h1>
+    <div className="p-10 w-full max-w-2xl mx-auto bg-white">
+      <p className="text-center text-lg">Want to create a new event or group? 
+Fill out this form and see your event/group immediately posted!</p>
 
       <div className="mb-4">
         <label>Name of Event</label>
@@ -184,7 +190,7 @@ const CreateEvent = () => {
         value={gear}
         onChange={setGear}
         placeholder="What to bring"
-        className="text-black"
+        className="text-black mb-6"
         options={[
           { label: "Backpack", value: "Backpack" },
           { label: "Rain Jacket", value: "Rain Jacket" },
@@ -201,10 +207,12 @@ const CreateEvent = () => {
 
       <button
         onClick={handleSubmit}
-        className="px-4 py-2 bg-black text-white rounded"
+        className="px-4 py-2 bg-black text-white rounded w-full"
       >
-        Create Event
+        Submit
       </button>
+    </div>
+    </div>
     </div>
   );
 };

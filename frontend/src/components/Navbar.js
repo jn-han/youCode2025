@@ -11,15 +11,15 @@ const Navbar = () => {
       pathname === path ? 'underline' : '';
   
     return (
-      <div className="grid grid-cols-[60%_30%_10%] bg-navbar text-white h-[100px] items-end pb-2 text-2xl font-primary">
+      <div className="grid grid-cols-[60%_30%_10%] bg-navbar text-white h-20 items-end pb-2 text-xl font-primary">
         <div className="ml-15">
           <p>Name</p>
         </div>
   
         <div className="flex space-x-12">
-          <Link href="/" className={linkStyle('/')}>HOME</Link>
-          <Link href="/groups" className={linkStyle('/groups')}>GROUPS</Link>
-          <Link href="/events" className={linkStyle('/events')}>EVENTS</Link>
+          <Link href="/home" className={linkStyle('/home')}>HOME</Link>
+          <Link href="/hub" className={linkStyle('/hub')}>MY HUB</Link>
+          <Link href="/createEvent" className={linkStyle('/createEvent')}>CREATE</Link>
         </div>
   
         <div>
