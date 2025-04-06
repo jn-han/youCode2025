@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
+import Navbar from "../components/Navbar";
 import HomePage from "./HomePage/Page";
 
 const interMono = Inter({
@@ -17,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children, pageProps }) {
   return (
     <html lang="en">
-      <body className={`${interMono.variable} `}>
+      <body className={`${interMono.variable}`}>
         <Navbar />
         <main>{children}</main>
       </body>
