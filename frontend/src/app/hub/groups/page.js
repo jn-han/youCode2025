@@ -22,7 +22,7 @@ const page = () => {
           <div>
             <h1 className="text-3xl">Updates</h1>
             <span className="flex items-start mt-6">
-              <div class="h-32 w-px bg-black "></div>
+              <div className="h-32 w-px bg-black "></div>
               <div className="flex flex-col gap-6 ml-4">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-green-500 rounded-full"></span>
