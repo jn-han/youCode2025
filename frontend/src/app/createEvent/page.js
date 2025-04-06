@@ -50,36 +50,32 @@ const CreateEvent = () => {
       setEventLocation(place.formatted_address);
     }
   };
-
   const handleCreateEvent = async () => {
-    if (!firstName || !lastName || !password || !email) {
-      alert("Please complete all fields before submitting.");
-      return;
-    }
-
     try {
-      const res = await API.post("/users", {
-        eventName,
-        eventDate,
-        eventLocation,
-        host,
-        organization,
+      const res = await API.post("/events", {
+        name: eventName,
+        date: eventDate,
+        location: eventLocation,
+        host: selectedHosts.map((h) => h.value), // 🧠 Array of user IDs
         difficulty,
-        eventDetails,
-        whatToBring,
+        eventDetails: details,
+        whatToBring: gear.map((item) => item.value), // 🧠 Array of strings
       });
-      console.log("✅ User created:", res.data);
 
-      setFirstName("");
-      setLastName("");
-      setEmail("");
-      setOrganization("");
-      setWantsToExperience([]);
-      setExperiencedActivities([]);
+      console.log("✅ Event created:", res.data);
 
-      router.push("./confirmation");
+      // Reset if needed
+      setEventName("");
+      setEventDate("");
+      setEventLocation("");
+      setSelectedHosts([]);
+      setDifficulty("");
+      setDetails("");
+      setGear([]);
+
+      router.push("/confirmation"); // ✅ Redirect after success
     } catch (err) {
-      console.error("❌ Error creating user:", err);
+      console.error("❌ Error creating event:", err);
     }
   };
 
@@ -200,7 +196,7 @@ const CreateEvent = () => {
       />
 
       <button
-        onClick={handleSubmit}
+        onClick={handleCreateEvent}
         className="px-4 py-2 bg-black text-white rounded"
       >
         Create Event
