@@ -15,7 +15,7 @@ const page = () => {
       >
         <div className="font-marcellus-sc text-white w-[55%] ml-24 ">
           <h1 className="font-bold text-6xl pb-12"> Welcome</h1>
-          <h1 className="font-bold text-6xl pb-12"> NAME!</h1>
+          <h1 className="font-bold text-6xl pb-12"> Lena!</h1>
         </div>
       </div>
       <div className="grid grid-cols-2 gap-12 mx-24 my-12">
