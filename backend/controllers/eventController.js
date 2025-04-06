@@ -48,13 +48,17 @@ const createEvent = async (req, res) => {
   }
 };
 
-// Get all events
 const getEvents = async (req, res) => {
   try {
-    const events = await Event.find().populate(
+    const { host } = req.query;
+
+    const query = host ? { host } : {};
+
+    const events = await Event.find(query).populate(
       "host",
       "firstName lastName email"
     );
+
     res.status(200).json(events);
   } catch (err) {
     console.error("❌ Error fetching events:", err);

@@ -86,17 +86,6 @@ const CreateEvent = () => {
     }
   };
 
-  const handleSubmit = () => {
-    console.log({
-      eventName,
-      eventDate,
-      eventLocation,
-      difficulty,
-      details,
-      hostIds: selectedHosts.map((host) => host.value),
-    });
-  };
-
   return (
     <div>
       <Navbar />

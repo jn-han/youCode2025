@@ -11,6 +11,7 @@ import {
   faFacebook,
   faApple,
 } from "@fortawesome/free-brands-svg-icons";
+import { useAuth } from "../../../contexts/AuthContext";
 
 const SignUpPage = () => {
   const [firstName, setFirstName] = useState("");
@@ -20,6 +21,8 @@ const SignUpPage = () => {
   const [step, setStep] = useState(1);
   const [organizations, setOrganizations] = useState([]);
   const router = useRouter();
+
+  const { login } = useAuth();
 
   const [organization, setOrganization] = useState("");
 
@@ -45,6 +48,8 @@ const SignUpPage = () => {
       });
       console.log("✅ User created:", res.data);
 
+      login(res.data);
+
       setFirstName("");
       setLastName("");
       setEmail("");
@@ -52,7 +57,7 @@ const SignUpPage = () => {
       setWantsToExperience([]);
       setExperiencedActivities([]);
 
-      router.push("/login");
+      router.push("/");
     } catch (err) {
       console.error("❌ Error creating user:", err);
     }
