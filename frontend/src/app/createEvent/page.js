@@ -56,15 +56,16 @@ const CreateEvent = () => {
         name: eventName,
         date: eventDate,
         location: eventLocation,
-        host: selectedHosts.map((h) => h.value), // 🧠 Array of user IDs
+        host: selectedHosts.map((h) => h.value),
         difficulty,
         eventDetails: details,
-        whatToBring: gear.map((item) => item.value), // 🧠 Array of strings
+        whatToBring: gear.map((item) => item.value),
       });
+
+      const newEventId = res.data._id;
 
       console.log("✅ Event created:", res.data);
 
-      // Reset if needed
       setEventName("");
       setEventDate("");
       setEventLocation("");
@@ -73,7 +74,7 @@ const CreateEvent = () => {
       setDetails("");
       setGear([]);
 
-      router.push("/confirmation"); // ✅ Redirect after success
+      router.push(`/events/${newEventId}`);
     } catch (err) {
       console.error("❌ Error creating event:", err);
     }
