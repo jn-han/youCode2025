@@ -2,6 +2,7 @@ import { Inter, Marcellus_SC } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import "../../lib/fontawesome";
+import { AuthProvider } from "../../contexts/AuthContext";
 
 const interMono = Inter({
   variable: "--font-primary",
@@ -13,7 +14,7 @@ const marcellusFont = Marcellus_SC({
   variable: "--font-marcellus-sc",
   subsets: ["latin"],
   weight: "400",
-})
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -24,7 +25,9 @@ export default function RootLayout({ children, pageProps }) {
   return (
     <html lang="en">
       <body className={`${interMono.variable} ${marcellusFont.variable}`}>
-        <main>{children}</main>
+        <AuthProvider>
+          <main>{children}</main>
+        </AuthProvider>
       </body>
     </html>
   );

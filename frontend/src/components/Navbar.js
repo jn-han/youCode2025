@@ -1,35 +1,64 @@
-'use client';
-import React from 'react'
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Navbar = () => {
-    const pathname = usePathname();
+  const pathname = usePathname();
+  const { isLoggedIn, user, logout } = useAuth();
+  const router = useRouter();
 
-    const linkStyle = (path) =>
-      pathname === path ? 'underline' : '';
-  
-    return (
-      <div className="grid grid-cols-[60%_30%_10%] bg-navbar text-white h-20 items-end pb-2 text-xl font-primary">
-        <div className="ml-15">
-          <p>Name</p>
-        </div>
-  
-        <div className="flex space-x-12">
-          <Link href="/home" className={linkStyle('/home')}>HOME</Link>
-          <Link href="/hub/groups" className={linkStyle('/hub/groups')}>MY HUB</Link>
-          <Link href="/createEvent" className={linkStyle('/createEvent')}>CREATE</Link>
-        </div>
-  
-        <div>
-          <Link href="/signUp">Sign Up</Link>
-          {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-14">
-            <path fillRule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clipRule="evenodd" />
-          </svg> */}
-        </div>
+  const linkStyle = (path) => (pathname === path ? "underline" : "");
+
+  return (
+    <div className="flex items-center justify-between bg-navbar text-white h-20 px-8 text-xl font-primary">
+      <div>
+        <p className="text-2xl font-semibold">Arc'connect</p>
       </div>
-    );
-}
 
-export default Navbar
+      <div className="flex items-center space-x-6">
+        <Link
+          href="/home"
+          className={`${linkStyle("/home")} ${
+            pathname !== "/home" ? "hover-underline-animation" : ""
+          }`}
+        >
+          HOME
+        </Link>
+        <Link
+          href="/hub"
+          className={`${linkStyle("/hub")} ${
+            pathname !== "/hub" ? "hover-underline-animation" : ""
+          }`}
+        >
+          MY HUB
+        </Link>
+        <Link
+          href="/createEvent"
+          className={`${linkStyle("/createEvent")} ${
+            pathname !== "/createEvent" ? "hover-underline-animation" : ""
+          }`}
+        >
+          CREATE
+        </Link>
+        {isLoggedIn ? (
+          <div className="flex items-center space-x-2">
+            <p>Welcome, {user?.firstName || "User"}</p>
+            <button onClick={logout} className="underline">
+              Logout
+            </button>
+          </div>
+        ) : (
+          <Link href="/signUp" className="">
+            SIGN UP
+          </Link>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;

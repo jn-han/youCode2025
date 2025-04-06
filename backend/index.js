@@ -6,6 +6,7 @@ require("dotenv").config(); // Load env variables
 const userRoutes = require("./routes/userRoutes");
 const activityRoutes = require("./routes/activityRoutes");
 const eventRoutes = require("./routes/eventRoutes");
+const organizationRoutes = require("./routes/organizationRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -13,11 +14,10 @@ const PORT = process.env.PORT || 8080;
 // Middleware
 app.use(cors());
 app.use(express.json());
-
-//Register routes
+app.use("/organizations", organizationRoutes);
 app.use("/users", userRoutes);
-app.use("/events", eventRoutes);
 app.use("/activities", activityRoutes);
+app.use("/events", eventRoutes);
 
 // MongoDB Connection
 mongoose
