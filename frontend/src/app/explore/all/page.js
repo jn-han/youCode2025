@@ -15,11 +15,11 @@ const page = () => {
           Events.
         </p>
         <div className="flex gap-8 mb-16">
-          <div class="w-full max-w-md border flex">
-            <div class="relative group">
-              <button class="bg-black text-white px-4 py-2 flex items-center text-center gap-1">
+          <div className="w-full max-w-md border flex">
+            <div className="relative group">
+              <button className="bg-black text-white px-4 py-2 flex items-center text-center gap-1">
                 All
-                <svg class="w-3 h-3" fill="white" viewBox="0 0 20 20">
+                <svg className="w-3 h-3" fill="white" viewBox="0 0 20 20">
                   <path d="M5.25 7.5L10 12.25L14.75 7.5H5.25Z" />
                 </svg>
               </button>
@@ -41,15 +41,10 @@ const page = () => {
                 placeholder="Search"
                 className="w-full px-2 py-2 focus:outline-none"
               />
-              <svg
-                className="w-5 h-5 text-black cursor-pointer"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-              >
-                <path d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z" />
-              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+</svg>
+
             </div>
           </div>
           <div class="w-full max-w-md border flex">
@@ -59,15 +54,11 @@ const page = () => {
                 placeholder="Location"
                 className="w-full px-2 py-2 focus:outline-none"
               />
-              <svg
-                className="w-5 h-5 text-black cursor-pointer"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-              >
-                <path d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z" />
-              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+</svg>
+
             </div>
           </div>
           <div class="w-50 max-w-md border flex">
@@ -102,37 +93,29 @@ const page = () => {
         location="Grouse Mountain, Vancouver"
         createdBy="Adventure Club"
       />
-     <GroupCard
-        imageSrc="/event3.png"
-        imageAlt="Moms hiking"
-        eventName="Hike with Moms"
-        description="Join us for a refreshing group hike at Grouse Mountain!"
-        attendeeCount={14}
-
+           <GroupCard
+        groupName="Pedal Pushers"
+        imageSrc="/pedalPushers.png"
+        description="A fun group for cycling enthusiasts of all levels. We ride, explore, and enjoy the open road together!"
+        membersCount={9}
+      />
+            <GroupCard
+        groupName="Pedal Pushers"
+        imageSrc="/pedalPushers.png"
+        description="A fun group for cycling enthusiasts of all levels. We ride, explore, and enjoy the open road together!"
+        membersCount={9}
+      />
+            <GroupCard
+        groupName="Pedal Pushers"
+        imageSrc="/pedalPushers.png"
+        description="A fun group for cycling enthusiasts of all levels. We ride, explore, and enjoy the open road together!"
+        membersCount={9}
       />
       <GroupCard
-        imageSrc="/event3.png"
-        imageAlt="Moms hiking"
-        eventName="Hike with Moms"
-        description="Join us for a refreshing group hike at Grouse Mountain!"
-        attendeeCount={14}
-
-      />
-      <GroupCard
-        imageSrc="/event3.png"
-        imageAlt="Moms hiking"
-        eventName="Hike with Moms"
-        description="Join us for a refreshing group hike at Grouse Mountain!"
-        attendeeCount={14}
-
-      />
-      <GroupCard
-        imageSrc="/event3.png"
-        imageAlt="Moms hiking"
-        eventName="Hike with Moms"
-        description="Join us for a refreshing group hike at Grouse Mountain!"
-        attendeeCount={14}
-
+        groupName="Pedal Pushers"
+        imageSrc="/pedalPushers.png"
+        description="A fun group for cycling enthusiasts of all levels. We ride, explore, and enjoy the open road together!"
+        membersCount={9}
       />
             <EventCard
         imageSrc="/event3.png"
