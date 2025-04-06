@@ -18,7 +18,7 @@ const Navbar = () => {
   
         <div className="flex space-x-12">
           <Link href="/home" className={linkStyle('/home')}>HOME</Link>
-          <Link href="/hub" className={linkStyle('/hub')}>MY HUB</Link>
+          <Link href="/hub/groups" className={linkStyle('/hub/groups')}>MY HUB</Link>
           <Link href="/createEvent" className={linkStyle('/createEvent')}>CREATE</Link>
         </div>
   

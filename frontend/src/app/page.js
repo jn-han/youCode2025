@@ -14,7 +14,7 @@ const page = () => {
       style={{ backgroundImage: "url('/welcome.png')" }}
       >
         <div className="font-marcellus-sc text-white w-[55%] ml-24 ">
-          <h1 className="font-bold text-6xl pb-12"> Welcome to NAME OF APP!</h1>
+          <h1 className="font-bold text-6xl pb-12"> Welcome to Arc&apos;Connect!</h1>
           <p className="text-3xl pb-10">A place for the arc&apos;teryx community to stay in touch, seek support, ask questions and plan meetups.</p>
           <Link href="/signUp" className="bg-white text-black font-bold text-xl font-primary p-2 px-10">Sign up</Link>
         </div>
