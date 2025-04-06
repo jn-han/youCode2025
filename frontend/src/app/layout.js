@@ -17,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children, pageProps }) {
   return (
     <html lang="en">
-      <body className={`${interMono.variable} ${bungeeMono.variable}`}>
+      <body className={`${interMono.variable} `}>
         <Navbar />
         <main>{children}</main>
       </body>
