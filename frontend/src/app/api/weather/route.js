@@ -1,6 +1,9 @@
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
-  const city = searchParams.get("city");
+  const rawCity = searchParams.get("city");
+  const city = rawCity?.split(",")[0];
+
+  console.log("🔍 City received:", city);
 
   if (!city) {
     return new Response(JSON.stringify({ message: "City is required" }), {
@@ -9,18 +12,20 @@ export async function GET(request) {
   }
 
   const apiKey = process.env.OPENWEATHER_API_KEY;
-  const endpoint = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
-    city
-  )}&units=metric&appid=${apiKey}`;
+  console.log("🔑 Using API key:", apiKey);
 
   try {
-    const weatherRes = await fetch(endpoint);
-    const data = await weatherRes.json();
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
+      city
+    )}&units=metric&appid=${apiKey}`;
 
-    if (!weatherRes.ok) {
-      return new Response(JSON.stringify(data), {
-        status: weatherRes.status,
-      });
+    console.log("🌐 Fetching:", url);
+
+    const res = await fetch(url);
+    const data = await res.json();
+
+    if (!res.ok) {
+      return new Response(JSON.stringify(data), { status: res.status });
     }
 
     return new Response(JSON.stringify(data), {
@@ -28,6 +33,7 @@ export async function GET(request) {
       headers: { "Content-Type": "application/json" },
     });
   } catch (err) {
+    console.error("❌ Weather API Error:", err);
     return new Response(
       JSON.stringify({ message: "Failed to fetch weather data" }),
       { status: 500 }

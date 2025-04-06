@@ -27,10 +27,12 @@ export default function Home() {
         <div>
           <h2>{weather.name}</h2>
           <p>Temp: {weather.main.temp}°C</p>
-          <p>Condition: {weather.weather[0].description}</p>
+          <p>Condition: {weather.weather?.[0]?.description}</p>
         </div>
+      ) : weather?.message ? (
+        <p>Error: {weather.message}</p>
       ) : (
-        weather?.message && <p>Error: {weather.message}</p>
+        <p>Loading weather data...</p>
       )}
     </div>
   );

@@ -111,7 +111,7 @@ const page = () => {
         description="A fun group for cycling enthusiasts of all levels. We ride, explore, and enjoy the open road together!"
         membersCount={9}
       />
-            <GroupCard
+      <GroupCard
         groupName="Pedal Pushers"
         imageSrc="/pedalPushers.png"
         description="A fun group for cycling enthusiasts of all levels. We ride, explore, and enjoy the open road together!"

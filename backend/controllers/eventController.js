@@ -1,10 +1,20 @@
-const Activity = require("../models/Activity");
+// controllers/eventController.js
+const Event = require("../models/Event");
+const User = require("../models/User");
 
+// Create a new event
 const createEvent = async (req, res) => {
   try {
-    const { name, date, location, host, difficulty, eventDetails } = req.body;
+    const {
+      name,
+      date,
+      location,
+      host,
+      difficulty,
+      eventDetails,
+      whatToBring = [],
+    } = req.body;
 
-    // Validation check (optional)
     if (
       !name ||
       !date ||
@@ -18,16 +28,19 @@ const createEvent = async (req, res) => {
         .json({ message: "Missing required event fields." });
     }
 
-    const newEvent = new Activity({
+    const newEvent = new Event({
       name,
       date,
       location,
       host,
       difficulty,
       eventDetails,
+      whatToBring,
     });
 
     const savedEvent = await newEvent.save();
+    console.log("Saved event:", savedEvent);
+
     res.status(201).json(savedEvent);
   } catch (err) {
     console.error("❌ Error creating event:", err);
@@ -35,13 +48,17 @@ const createEvent = async (req, res) => {
   }
 };
 
-// Get all events
 const getEvents = async (req, res) => {
   try {
-    const events = await Activity.find().populate(
+    const { host } = req.query;
+
+    const query = host ? { host } : {};
+
+    const events = await Event.find(query).populate(
       "host",
       "firstName lastName email"
     );
+
     res.status(200).json(events);
   } catch (err) {
     console.error("❌ Error fetching events:", err);
@@ -49,7 +66,22 @@ const getEvents = async (req, res) => {
   }
 };
 
+// Get a single event by ID
+const getEventById = async (req, res) => {
+  try {
+    const event = await Event.findById(req.params.id).populate(
+      "host",
+      "firstName lastName email"
+    );
+    if (!event) return res.status(404).json({ message: "Event not found." });
+    res.status(200).json(event);
+  } catch (err) {
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+};
+
 module.exports = {
   createEvent,
   getEvents,
+  getEventById,
 };
