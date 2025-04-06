@@ -7,6 +7,11 @@ const eventSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  location: {},
+  attendees: {
+    type: [User],
+  },
+  createdBy: {},
   difficulty: {
     type: String,
     enum: ["Beginner", "Intermediate", "Advanced"],

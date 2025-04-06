@@ -1,27 +1,50 @@
 const User = require("../models/User");
+const Organization = require("../models/Organizations");
 
 // Create a user
 const createUser = async (req, res) => {
   try {
-    const { name, email } = req.body;
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+      organization,
+      experiencedActivities,
+      wantsToExperience,
+    } = req.body;
 
-    // ✅ Check if user with this email already exists
+    // Check if user already exists
     const existingUser = await User.findOne({ email });
-
     if (existingUser) {
       return res
-        .status(409) // 409 Conflict
+        .status(409)
         .json({ message: "User with this email already exists." });
     }
 
-    // ✅ Create new user
-    const newUser = new User({ name, email });
+    // Create new user
+    const newUser = new User({
+      firstName,
+      lastName,
+      email,
+      password,
+      organization,
+      experiencedActivities,
+      wantsToExperience,
+    });
+
     const savedUser = await newUser.save();
+
+    if (organization) {
+      await Organization.findByIdAndUpdate(organization, {
+        $addToSet: { users: savedUser._id },
+      });
+    }
 
     res.status(201).json(savedUser);
   } catch (err) {
-    console.error("Error creating user:", err);
-    res.status(500).json({ message: "Server error" });
+    console.error("❌ Error creating user:", err);
+    res.status(500).json({ message: "Server error", error: err.message });
   }
 };
 

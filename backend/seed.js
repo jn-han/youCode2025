@@ -1,32 +1,40 @@
-// backend/seedActivities.js
+// backend/seedOrganizations.js
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const Activity = require("./models/Activity");
+const Organization = require("./models/Organizations");
 
-const seedActivities = async () => {
+const seedOrganizations = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
 
-    const activities = [{ name: "Hiking" }, { name: "Rock Climbing (Indoor)" }];
+    const organizations = [
+      { name: "Arc'teryx Academies" },
+      { name: "Endemic Mountain Events" },
+      { name: "Regional Experiences" },
+      { name: "Local/Store Events & Activations" },
+      { name: "Arc'teryx Communities" },
+      { name: "No Wasted Days Grand Program" },
+      { name: "Partnerships" },
+    ];
 
-    for (const activity of activities) {
-      const exists = await Activity.findOne({ name: activity.name });
+    for (const org of organizations) {
+      const exists = await Organization.findOne({ name: org.name });
       if (!exists) {
-        await Activity.create(activity);
-        console.log(`✅ Added activity: ${activity.name}`);
+        await Organization.create(org);
+        console.log(`✅ Added organization: ${org.name}`);
       } else {
-        console.log(`⚠️  Skipped (already exists): ${activity.name}`);
+        console.log(`⚠️  Skipped (already exists): ${org.name}`);
       }
     }
 
     mongoose.connection.close();
   } catch (err) {
-    console.error("❌ Error seeding activities:", err);
+    console.error("❌ Error seeding organizations:", err);
   }
 };
 
-seedActivities();
+seedOrganizations();

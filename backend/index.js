@@ -5,6 +5,7 @@ require("dotenv").config(); // Load env variables
 
 const userRoutes = require("./routes/userRoutes");
 const activityRoutes = require("./routes/activityRoutes");
+const organizationRoutes = require("./routes/organization");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -13,9 +14,11 @@ const PORT = process.env.PORT || 8080;
 app.use(cors());
 app.use(express.json());
 
+//Organization routes
+app.use("/organizations", organizationRoutes);
 //Register routes
 app.use("/users", userRoutes);
-
+// Activities routes
 app.use("/activities", activityRoutes);
 
 // MongoDB Connection

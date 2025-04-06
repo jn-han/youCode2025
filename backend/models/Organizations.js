@@ -1,18 +1,9 @@
+// models/Organization.js
 const mongoose = require("mongoose");
 
 const organizationSchema = new mongoose.Schema({
-  name: String,
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  association: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-    },
-  ],
+  name: { type: String, required: true },
+  users: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
 });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Organization", organizationSchema);
