@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
-import HomePage from "./HomePage/Page";
+import "../../lib/fontawesome";
 
 const interMono = Inter({
   variable: "--font-primary",
@@ -18,7 +18,6 @@ export default function RootLayout({ children, pageProps }) {
   return (
     <html lang="en">
       <body className={`${interMono.variable}`}>
-        <Navbar />
         <main>{children}</main>
       </body>
     </html>
