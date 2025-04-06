@@ -45,8 +45,8 @@ const Navbar = () => {
           HOME
         </Link>
         <Link
-          href="/hub"
-          className={`${linkStyle("/hub")} ${
+          href="/hub/events"
+          className={`${linkStyle("/hub/events")} ${
             pathname !== "/hub" ? "hover-underline-animation" : ""
           }`}
         >
