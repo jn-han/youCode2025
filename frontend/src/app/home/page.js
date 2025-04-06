@@ -141,36 +141,36 @@ const page = () => {
 <h1 className="text-4xl my-14 font-primary">Newly Posted Groups</h1>
 <div className="overflow-x-auto w-full">
 <div className="flex flex-row space-x-4">
-    <GroupCard
-        imageSrc="/event1.png"
-        imageAlt="Moms hiking"
-        eventName="Hike with Moms"
-        description="Join us for a refreshing group hike at Grouse Mountain!"
-        attendeeCount={14}
-        
+<GroupCard
+        title="Skiing 101"
+        imageSrc="/skiing.png"
+        memberCount={30}
+        status="active"
+        text="Flash Foxy stands with women and genderqueer climbers - including trans and gender non-conforming folks - who need a space to pursue their love of the sport without having to deal with historic barriers to access"
+
       />
       <GroupCard
-        imageSrc="/event3.png"
-        imageAlt="Moms hiking"
-        eventName="Hike with Moms"
-        description="Join us for a refreshing group hike at Grouse Mountain!"
-        attendeeCount={14}
-        
+        title="Skiing 101"
+        imageSrc="/skiing.png"
+        memberCount={30}
+        status="active"
+        text="Flash Foxy stands with women and genderqueer climbers - including trans and gender non-conforming folks - who need a space to pursue their love of the sport without having to deal with historic barriers to access"
+
       />
       <GroupCard
-        imageSrc="/event3.png"
-        imageAlt="Moms hiking"
-        eventName="Hike with Moms"
-        description="Join us for a refreshing group hike at Grouse Mountain!"
-        attendeeCount={14}
-        
+        title="Skiing 101"
+        imageSrc="/skiing.png"
+        memberCount={30}
+        status="active"
+        text="Flash Foxy stands with women and genderqueer climbers - including trans and gender non-conforming folks - who need a space to pursue their love of the sport without having to deal with historic barriers to access"
+
       />
       <GroupCard
-        imageSrc="/event3.png"
-        imageAlt="Moms hiking"
-        eventName="Hike with Moms"
-        description="Join us for a refreshing group hike at Grouse Mountain!"
-        attendeeCount={14}
+        title="Skiing 101"
+        imageSrc="/skiing.png"
+        memberCount={30}
+        status="active"
+        text="Flash Foxy stands with women and genderqueer climbers - including trans and gender non-conforming folks - who need a space to pursue their love of the sport without having to deal with historic barriers to access"
 
       />
 
