@@ -35,7 +35,7 @@ const EventPage = ({
       <div className="relative w-full h-[450px]">
         <Image
           src={image}
-          alt={name}
+          alt={"alternate"}
           fill
           className="object-cover rounded-md"
         />
