@@ -13,6 +13,7 @@
   --font-mono: var(--font-geist-mono);
   --font-primary: var(--font-primary);
   --color-navbar: #010101;
+  --font-marcellus-sc: var(--font-marcellus-sc);
 }
 
 @media (prefers-color-scheme: dark) {
