@@ -4,12 +4,24 @@ const userSchema = new mongoose.Schema({
   firstName: {
     type: String,
     required: true,
-    unique: false,
   },
   lastName: {
     type: String,
     required: true,
-    unique: false,
+  },
+  password: {
+    // 🔧 Add this
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  organization: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Organization",
   },
   experiencedActivities: [
     {
@@ -23,12 +35,6 @@ const userSchema = new mongoose.Schema({
       ref: "Activity",
     },
   ],
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  organization: {},
 });
 
 module.exports = mongoose.model("User", userSchema);

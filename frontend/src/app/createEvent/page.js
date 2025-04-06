@@ -52,6 +52,10 @@ const CreateEvent = () => {
     }
   };
   const handleCreateEvent = async () => {
+    if (!difficulty) {
+      alert("Please select a difficulty level.");
+      return;
+    }
     try {
       const res = await API.post("/events", {
         name: eventName,
@@ -74,6 +78,7 @@ const CreateEvent = () => {
       setDifficulty("");
       setDetails("");
       setGear([]);
+      console.log("Event ID →", newEventId);
 
       router.push(`/events/${newEventId}`);
     } catch (err) {
@@ -117,6 +122,7 @@ const CreateEvent = () => {
             <label>Date of Event</label>
             <input
               type="datetime-local"
+              min={new Date().toISOString().slice(0, 16)}
               value={eventDate}
               onChange={(e) => setEventDate(e.target.value)}
               className="border p-2 w-full"
@@ -165,6 +171,7 @@ const CreateEvent = () => {
             <select
               value={difficulty}
               onChange={(e) => setDifficulty(e.target.value)}
+              required
               className="border p-2 w-full"
             >
               <option value="">Select difficulty</option>
