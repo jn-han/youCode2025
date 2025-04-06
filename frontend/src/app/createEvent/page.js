@@ -4,18 +4,26 @@ import React, { useEffect, useState, useRef } from "react";
 import dynamic from "next/dynamic";
 import { LoadScript, Autocomplete } from "@react-google-maps/api";
 import API from "../../../utils/api";
+import { useRouter } from "next/navigation";
+
 const Select = dynamic(() => import("react-select"), { ssr: false });
+
+const CreatableSelect = dynamic(() => import("react-select/creatable"), {
+  ssr: false,
+});
+
 const libraries = ["places"];
 
 const CreateEvent = () => {
   const [users, setUsers] = useState([]);
   const [selectedHosts, setSelectedHosts] = useState([]);
-
+  const [gear, setGear] = useState([]);
   const [eventName, setEventName] = useState("");
   const [eventDate, setEventDate] = useState("");
   const [eventLocation, setEventLocation] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [details, setDetails] = useState("");
+  const router = useRouter();
 
   const autocompleteRef = useRef(null);
 
@@ -40,6 +48,38 @@ const CreateEvent = () => {
     const place = autocompleteRef.current.getPlace();
     if (place && place.formatted_address) {
       setEventLocation(place.formatted_address);
+    }
+  };
+
+  const handleCreateEvent = async () => {
+    if (!firstName || !lastName || !password || !email) {
+      alert("Please complete all fields before submitting.");
+      return;
+    }
+
+    try {
+      const res = await API.post("/users", {
+        eventName,
+        eventDate,
+        eventLocation,
+        host,
+        organization,
+        difficulty,
+        eventDetails,
+        whatToBring,
+      });
+      console.log("✅ User created:", res.data);
+
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setOrganization("");
+      setWantsToExperience([]);
+      setExperiencedActivities([]);
+
+      router.push("./confirmation");
+    } catch (err) {
+      console.error("❌ Error creating user:", err);
     }
   };
 
@@ -136,6 +176,28 @@ const CreateEvent = () => {
           className="border p-2 w-full"
         />
       </div>
+
+      <label>What to Bring</label>
+
+      <CreatableSelect
+        isMulti
+        value={gear}
+        onChange={setGear}
+        placeholder="What to bring"
+        className="text-black"
+        options={[
+          { label: "Backpack", value: "Backpack" },
+          { label: "Rain Jacket", value: "Rain Jacket" },
+          { label: "Umbrella", value: "Umbrella" },
+          { label: "Climbing Harness", value: "Climbing Harness" },
+          { label: "Crash Pads", value: "Crash Pads" },
+        ]}
+        isClearable
+        onCreateOption={(inputValue) => {
+          const newOption = { label: inputValue, value: inputValue };
+          setGear((prev) => [...prev, newOption]);
+        }}
+      />
 
       <button
         onClick={handleSubmit}

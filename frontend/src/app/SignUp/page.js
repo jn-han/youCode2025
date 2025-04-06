@@ -32,15 +32,7 @@ const SignUpPage = () => {
       alert("Please complete all fields before submitting.");
       return;
     }
-    console.log(
-      "first name: " + firstName,
-      "last name: " + lastName,
-      "password: " + password,
-      "mail: " + email,
-      "org: " + organization,
-      experiencedActivities,
-      wantsToExperience
-    );
+
     try {
       const res = await API.post("/users", {
         firstName,
