@@ -2,13 +2,12 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import dynamic from "next/dynamic";
-import { LoadScript, Autocomplete } from "@react-google-maps/api";
+import { useLoadScript, Autocomplete } from "@react-google-maps/api";
 import API from "../../../utils/api";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 
 const Select = dynamic(() => import("react-select"), { ssr: false });
-
 const CreatableSelect = dynamic(() => import("react-select/creatable"), {
   ssr: false,
 });
@@ -25,8 +24,13 @@ const CreateEvent = () => {
   const [difficulty, setDifficulty] = useState("");
   const [details, setDetails] = useState("");
   const router = useRouter();
-
   const autocompleteRef = useRef(null);
+
+  // Load the Google Maps API script
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+    libraries,
+  });
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -51,6 +55,7 @@ const CreateEvent = () => {
       setEventLocation(place.formatted_address);
     }
   };
+
   const handleCreateEvent = async () => {
     if (!difficulty) {
       alert("Please select a difficulty level.");
@@ -71,6 +76,7 @@ const CreateEvent = () => {
 
       console.log("✅ Event created:", res.data);
 
+      // Clear form fields
       setEventName("");
       setEventDate("");
       setEventLocation("");
@@ -85,6 +91,9 @@ const CreateEvent = () => {
       console.error("❌ Error creating event:", err);
     }
   };
+
+  if (loadError) return <div>Error loading maps</div>;
+  if (!isLoaded) return <div>Loading Maps...</div>;
 
   return (
     <div>
@@ -120,21 +129,17 @@ const CreateEvent = () => {
 
           <div className="mb-4">
             <label>Location of Event</label>
-            <LoadScript
-              googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
-              libraries={libraries}
+            {/* Removed the <LoadScript> wrapper and rely on useLoadScript above */}
+            <Autocomplete
+              onLoad={(auto) => (autocompleteRef.current = auto)}
+              onPlaceChanged={handlePlaceChanged}
             >
-              <Autocomplete
-                onLoad={(auto) => (autocompleteRef.current = auto)}
-                onPlaceChanged={handlePlaceChanged}
-              >
-                <input
-                  type="text"
-                  placeholder="Search location..."
-                  className="border p-2 w-full"
-                />
-              </Autocomplete>
-            </LoadScript>
+              <input
+                type="text"
+                placeholder="Search location..."
+                className="border p-2 w-full"
+              />
+            </Autocomplete>
             {eventLocation && (
               <p className="text-sm mt-2">📍 {eventLocation}</p>
             )}

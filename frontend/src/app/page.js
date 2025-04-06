@@ -137,32 +137,28 @@ const page = () => {
           <div className="overflow-x-auto w-full">
             <div className="flex flex-row space-x-4">
               <GroupCard
-                imageSrc="/event1.png"
-                imageAlt="Moms hiking"
-                eventName="Hike with Moms"
-                description="Join us for a refreshing group hike at Grouse Mountain!"
-                attendeeCount={14}
+                groupName="Pedal Pushers"
+                imageSrc="/pedalPushers.png"
+                description="A fun group for cycling enthusiasts of all levels. We ride, explore, and enjoy the open road together!"
+                membersCount={9}
               />
               <GroupCard
-                imageSrc="/event3.png"
-                imageAlt="Moms hiking"
-                eventName="Hike with Moms"
-                description="Join us for a refreshing group hike at Grouse Mountain!"
-                attendeeCount={14}
+                groupName="Pedal Pushers"
+                imageSrc="/pedalPushers.png"
+                description="A fun group for cycling enthusiasts of all levels. We ride, explore, and enjoy the open road together!"
+                membersCount={9}
               />
               <GroupCard
-                imageSrc="/event3.png"
-                imageAlt="Moms hiking"
-                eventName="Hike with Moms"
-                description="Join us for a refreshing group hike at Grouse Mountain!"
-                attendeeCount={14}
+                groupName="Pedal Pushers"
+                imageSrc="/pedalPushers.png"
+                description="A fun group for cycling enthusiasts of all levels. We ride, explore, and enjoy the open road together!"
+                membersCount={9}
               />
               <GroupCard
-                imageSrc="/event3.png"
-                imageAlt="Moms hiking"
-                eventName="Hike with Moms"
-                description="Join us for a refreshing group hike at Grouse Mountain!"
-                attendeeCount={14}
+                groupName="Pedal Pushers"
+                imageSrc="/pedalPushers.png"
+                description="A fun group for cycling enthusiasts of all levels. We ride, explore, and enjoy the open road together!"
+                membersCount={9}
               />
             </div>
           </div>
