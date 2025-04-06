@@ -36,6 +36,10 @@ const eventSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  whatToBring: {
+    type: [String],
+    required: false,
+  },
 });
 
 module.exports = mongoose.model("Event", eventSchema);
