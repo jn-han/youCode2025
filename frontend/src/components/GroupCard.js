@@ -24,7 +24,7 @@
 //       </div>
 
 //       <div className="flex flex-col pt-2">
-        
+
 //           <div>
 //           <div className="flex items-center pb-2">
 //             <h3 className="text-lg font-semibold py-1">{eventName}</h3>
@@ -49,7 +49,6 @@
 //             <p>{description}</p>
 //           </div>
 //           <div>
-            
 
 //           </div>
 //       </div>
@@ -59,20 +58,19 @@
 
 // export default GroupCard;
 
-
 // components/GroupCard.js
-import Image from 'next/image';
+import Image from "next/image";
 
-export default function GroupCard({ 
-  title, 
-  imageSrc, 
-  memberCount, 
-  status, 
-  text
+export default function GroupCard({
+  title,
+  imageSrc,
+  memberCount,
+  status,
+  text,
 }) {
   return (
     <div className="flex flex-col items-center text-center">
-      <Image src={imageSrc} alt={title} width={500} height={500} />
+      <Image src={imageSrc} alt={"alt"} width={500} height={500} />
 
       <div className="flex items-center justify-center gap-4 mt-2">
         <h1 className="text-lg font-semibold">{title}</h1>
@@ -98,24 +96,20 @@ export default function GroupCard({
         <div className="flex gap-1">
           <span
             className={`w-2 h-2 rounded-full ${
-              status === 'active' ? 'bg-green-500' : 'bg-gray-400'
+              status === "active" ? "bg-green-500" : "bg-gray-400"
             }`}
           ></span>
           <span className="text-sm text-black">{status}</span>
         </div>
       </div>
 
-
-      <p className="text-sm">
-{text}            </p>
+      <p className="text-sm">{text} </p>
       <div className="pt-10 items-center flex text-sm">
-              <div
-                className="bg-navbar text-white p-3 mr-4 shadow-md"
-              >
-                Learn More
-              </div>
-              <span className="bg-navbar text-white p-3 px-6 shadow-md">Join</span>
-            </div>
+        <div className="bg-navbar text-white p-3 mr-4 shadow-md">
+          Learn More
+        </div>
+        <span className="bg-navbar text-white p-3 px-6 shadow-md">Join</span>
+      </div>
     </div>
   );
 }
