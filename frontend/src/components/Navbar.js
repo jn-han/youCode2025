@@ -27,7 +27,7 @@ const Navbar = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-6"
+            className="size-9"
           >
             <path
               strokeLinecap="round"
@@ -36,7 +36,6 @@ const Navbar = () => {
             />
           </svg>
         </Link>
-
         <Link
           href="/home"
           className={`${linkStyle("/home")} ${
@@ -69,9 +68,7 @@ const Navbar = () => {
             </button>
           </div>
         ) : (
-          <Link href="/signUp" className="">
-            SIGN UP
-          </Link>
+          <Link href="/signUp">SIGN UP</Link>
         )}
       </div>
     </div>
