@@ -110,35 +110,28 @@ const page = () => {
 <div className="overflow-x-auto w-full">
 <div className="flex flex-row space-x-4">
 <GroupCard
-        title="Skiing 101"
-        imageSrc="/skiing.png"
-        memberCount={30}
-        status="active"
-        text="Flash Foxy stands with women and genderqueer climbers - including trans and gender non-conforming folks - who need a space to pursue their love of the sport without having to deal with historic barriers to access"
+        groupName="Pedal Pushers"
+        imageSrc="/pedalPushers.png"
+        description="A fun group for cycling enthusiasts of all levels. We ride, explore, and enjoy the open road together!"
+        membersCount={9}
       />
       <GroupCard
-        title="Skiing 101"
-        imageSrc="/skiing.png"
-        memberCount={30}
-        status="active"
-        text="Flash Foxy stands with women and genderqueer climbers - including trans and gender non-conforming folks - who need a space to pursue their love of the sport without having to deal with historic barriers to access"
-
+        groupName="Pedal Pushers"
+        imageSrc="/pedalPushers.png"
+        description="A fun group for cycling enthusiasts of all levels. We ride, explore, and enjoy the open road together!"
+        membersCount={9}
       />
       <GroupCard
-        title="Skiing 101"
-        imageSrc="/skiing.png"
-        memberCount={30}
-        status="active"
-        text="Flash Foxy stands with women and genderqueer climbers - including trans and gender non-conforming folks - who need a space to pursue their love of the sport without having to deal with historic barriers to access"
-
+        groupName="Pedal Pushers"
+        imageSrc="/pedalPushers.png"
+        description="A fun group for cycling enthusiasts of all levels. We ride, explore, and enjoy the open road together!"
+        membersCount={9}
       />
-            <GroupCard
-        title="Skiing 101"
-        imageSrc="/skiing.png"
-        memberCount={30}
-        status="active"
-        text="Flash Foxy stands with women and genderqueer climbers - including trans and gender non-conforming folks - who need a space to pursue their love of the sport without having to deal with historic barriers to access"
-
+      <GroupCard
+        groupName="Pedal Pushers"
+        imageSrc="/pedalPushers.png"
+        description="A fun group for cycling enthusiasts of all levels. We ride, explore, and enjoy the open road together!"
+        membersCount={9}
       />
 
 

@@ -63,7 +63,12 @@ const EventCard = ({
               <span className="block sm:inline">{createdBy}</span>
             </div>
           </div>
+
         </div>
+        <div className="pt-4 pb-6 items-center flex text-sm">
+        <div className="bg-navbar text-white p-3 mr-4 shadow-md">Learn More</div>
+        <span className="bg-navbar text-white p-3 px-6 shadow-md">Register</span>
+      </div>
       </div>
     </div>
   );
